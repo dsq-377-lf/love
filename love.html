@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[LF]生日问答默契挑战</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff5f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      color: #e91e63;
+    }
+    select, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+    .question-box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 90%;
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>[LF]生日问答默契挑战</h1>
+  <label for="category">选择题目类型：</label>
+  <select id="category">
+    <option value="共同兴趣类">共同兴趣类</option>
+    <option value="生活细节类">生活细节类</option>
+    <option value="恋爱纪念类">恋爱纪念类</option>
+  </select>
+  <button onclick="drawQuestion()">🎲 抽题！</button>
+  <div class="question-box" id="questionBox">点击上方按钮抽取一道问题～</div>
+
+  <script>
+    const questions = {
+      "共同兴趣类": [
+        "我最喜欢的球星是？",
+        "我们第一次一起看的球赛是哪一场？",
+        "如果我是一名球员，会打哪个位置？",
+        "谁更容易“演伤”骗暂停？"
+      ],
+      "生活细节类": [
+        "我最常说的口头禅是什么？",
+        "我平时手机最常刷的APP是？",
+        "手机电量低于多少会开始焦虑？",
+        "我洗澡时喜欢唱歌吗？"
+      ],
+      "恋爱纪念类": [
+        "如果爱情是个赛季，我们现在在哪个阶段？（常规赛/季后赛/总决赛）",
+        "去过的第一个出国旅行地点是？",
+        "如果爱情是一年四季，我们现在处在哪个季节？（春/夏/秋/冬）",
+        "最难忘的一次吵架是因为什么？"
+      ]
+    };
+
+    function drawQuestion() {
+      const category = document.getElementById("category").value;
+      const questionList = questions[category];
+      const randomIndex = Math.floor(Math.random() * questionList.length);
+      document.getElementById("questionBox").innerText = questionList[randomIndex];
+    }
+  </script>
+</body>
+</html>
